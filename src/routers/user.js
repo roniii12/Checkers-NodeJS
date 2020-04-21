@@ -20,10 +20,11 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/users/logout', auth, async (req, res) => {
+router.post('/logout', auth, async (req, res) => {
     try {
         req.user.tokens = []
         await req.user.save()
+        await res.clearCookie('token');
         res.status(200).send()
     } catch (e) {
         res.status(500).send()
@@ -43,7 +44,7 @@ router.post('/register', async (req,res)=>{
     }
 })
 router.get("/register",(req,res)=>{
-    res.sendfile(path.resolve('../public/register.html'))
+    res.sendfile(path.resolve('./public/register.html'))
 })
 
 router.get('/users/me', auth, async (req, res) => {

@@ -6,6 +6,8 @@ const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
 const $sendLocationButton = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
+const $logOut = document.querySelector('#logOut')
+
 
 // Templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
@@ -46,6 +48,13 @@ const autoscroll = () => {
         $messages.scrollTop = $messages.scrollHeight
     }
 }
+
+$logOut.addEventListener("click",(e)=>{
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", `/logout`,false);
+    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhttp.send();
+})
 
 socket.on('message', (message) => {
     const html = Mustache.render(messageTemplate, {

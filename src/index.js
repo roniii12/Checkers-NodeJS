@@ -91,17 +91,17 @@ io.on('connection', (socket) => {
         }
     })
 
-    // socket.on('addUser',(options,callback)=>{
-    //     request({method:"POST", uri: "http://127.0.0.1:8000/register",json: options},(error,response,body)=>{
-    //         callback(response.body||"");
-    //     })
-    // })
-
-    socket.on("login",(options,callback)=>{
-        request.post({uri: "http://127.0.0.1:8000/login", json: options},(error,response,body)=>{
+    socket.on('addUser',(options,callback)=>{
+        request({method:"POST", uri: "http://127.0.0.1:8000/register",json: options},(error,response,body)=>{
             callback(response.body||"");
         })
     })
+
+    // socket.on("login",(options,callback)=>{
+    //     request.post({uri: "http://127.0.0.1:8000/login", json: options},(error,response,body)=>{
+    //         callback(response.body||"");
+    //     })
+    // })
 
 
     socket.on('sendMessage', (message, callback) => {
@@ -154,6 +154,7 @@ io.on('connection', (socket) => {
         if(broad.isGameOverProp && broad.isGameOverProp.GameOver == true)
         {
             broad.isGameOverProp.message += " (" + username+") ";
+            console.log(broad.isGameOverProp.message);
             const users = getUsersInRoom(room);
             let user1= await User.findOne({name: users[0].username})
             let user2= await User.findOne({name: users[1].username})
