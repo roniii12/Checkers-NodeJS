@@ -1,0 +1,112 @@
+.content{
+    display: flex;
+}
+table[id*='checker'],
+table[id*='checker'] td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table[id*='checker']{
+    float: left;
+}
+
+table[id*='checker'] td {
+    height: 4em;
+    width: 4em;
+}
+
+table[id*='checker'] td.bright {
+    background-color: white;
+}
+
+table[id*='checker'] td.dark {
+    background-color: grey;
+}
+
+table[id*='checker'] img {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+table[id*='checker'] .darkCharacter {
+    height: 30px;
+    width: 30px;
+    background-color: black;
+    border-radius: 50%;
+    border: 4px solid white;
+    margin: auto;
+    display: block;
+}
+
+table[id*='checker'] .brightCharacter {
+    height: 30px;
+    width: 30px;
+    border: 4px solid white;
+    background-color: brown;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+}
+
+table[id*='checker'] .darkKing {
+    height: 30px;
+    width: 30px;
+    border: 4px solid yellow;
+    background-color: black;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    font-weight: 900;
+    color: white;
+}
+
+table[id*='checker'] .brightKing {
+    height: 30px;
+    width: 30px;
+    border: 4px solid yellow;
+    background-color: brown;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    font-weight: 900;
+    color: black;
+}
+
+table[id*='checker'] .dark.selected {
+    background-color: red;
+}
+
+table[id*='checker'] .dark.selected.end {
+    background-color: burlywood;
+}
+
+.headerGame{
+    color: white;
+    margin-left: 5px;
+}
+
+.chat{
+    margin-right: 10px;
+}
+#rules{
+    /* margin-top: auto;
+    display: flex;
+    height: 40px;
+    width: 100%;
+    max-width: 100vw; */
+    position: absolute;
+    bottom:0;
+    margin-left: 15vw;
+    width: 85vw;
+    /* margin-right: auto; */
+
+}
+

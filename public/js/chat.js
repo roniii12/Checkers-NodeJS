@@ -49,12 +49,12 @@ const autoscroll = () => {
     }
 }
 
-$logOut.addEventListener("click",(e)=>{
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", `/logout`,false);
-    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhttp.send();
-})
+// $logOut.addEventListener("click",(e)=>{
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.open("POST", `/logout`,false);
+//     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+//     xhttp.send();
+// })
 
 socket.on('message', (message) => {
     const html = Mustache.render(messageTemplate, {

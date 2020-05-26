@@ -88,7 +88,7 @@ button:disabled {
 	height: 100vh;
 	color: #fff;
 	background: #333744;
-	width: 225px;
+	width: 15vw;
 	overflow-y: auto
 }
 
@@ -167,6 +167,10 @@ button:disabled {
 	list-style-type: none;
 	font-weight: 300;
 	padding: 12px 24px 0
+}
+
+.users a{
+	color: white;
 }
 
 .error {
