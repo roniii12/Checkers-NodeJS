@@ -19,7 +19,7 @@ function CheckersGame(numbersOfRow, currentChecker, currentCheckerKing) {
     this.table = [];
     this.locations = [];
     this.isTurnBright = true;
-    this.elements = [];
+    this.selectedElements = [];
     this.update = {
         location: this.locations,
         locationDelete: {
@@ -69,12 +69,12 @@ function CheckersGame(numbersOfRow, currentChecker, currentCheckerKing) {
         if (this.locations.length > 0) {
             element.className += " selected";
         }
-        if (this.elements.length == 0) {
-            this.elements[0] = element;
+        if (this.selectedElements.length == 0) {
+            this.selectedElements[0] = element;
         } else
-            this.elements[1] = element;
-        if (this.elements.length > 1) {
-            this.elements[0].className = this.elements[0].className.replace("selected", "");
+            this.selectedElements[1] = element;
+        if (this.selectedElements.length > 1) {
+            this.selectedElements[0].className = this.selectedElements[0].className.replace("selected", "");
         }
     }
 
@@ -345,7 +345,7 @@ function CheckersGame(numbersOfRow, currentChecker, currentCheckerKing) {
                         console.log(this.isGameOverProp);
                     }
                     this.locations = [];
-                    this.elements[1].className += " end"
+                    this.selectedElements[1].className += " end"
                     this.isTurnBright = (this.isTurnBright ? false : true);
                 }
                 console.log("locations: ", this.locations);

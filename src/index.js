@@ -74,21 +74,27 @@ io.on('connection', (socket) => {
         if (error) {
             return callback({error})
         }
-        socket.join(user.room)
+        let message;
+        let lengthUsers = Object.keys(getUsersInRoom(user.room)).length
+        if(lengthUsers == 1){
+            message = "bright";
+        }
+        else if (lengthUsers == 2){
+            message = "dark";
+        }
+        else {
+            message = "watch";
+        }
+        socket.join(user.room);
+        user.status = message;
+        user.points = realUser.points
         io.to(user.room).emit('roomData', {
             room: user.room,
             users: getUsersInRoom(user.room),
+            points: user.points,
+            status: user.status
         });
-        let lengthUsers = Object.keys(getUsersInRoom(user.room)).length
-        if(lengthUsers == 1){
-            callback({message: "bright"});
-        }
-        else if (lengthUsers == 2){
-            callback({message: "dark"});
-        }
-        else {
-            callback({message: "watch"})
-        }
+        callback({message});
     })
 
     socket.on('addUser',(options,callback)=>{
@@ -96,12 +102,6 @@ io.on('connection', (socket) => {
             callback(response.body||"");
         })
     })
-
-    // socket.on("login",(options,callback)=>{
-    //     request.post({uri: "http://127.0.0.1:8000/login", json: options},(error,response,body)=>{
-    //         callback(response.body||"");
-    //     })
-    // })
 
 
     socket.on('sendMessage', (message, callback) => {
@@ -137,7 +137,6 @@ io.on('connection', (socket) => {
         let broad;
         let change;
         if(numbersOfRow){
-            console.log("has nubmers of row ohhhhhhh");
             broad = new CheckersGame(numbersOfRow,currentChecker,currentCheckerKing);
             broad.createTable();
         }
@@ -146,7 +145,7 @@ io.on('connection', (socket) => {
             keepPlay.table = game.table;
             keepPlay.locations = game.locations;
             keepPlay.isTurnBright = game.isTurnBright;
-            keepPlay.elements = game.elements;
+            keepPlay.selectedElements = game.selectedElements;
             keepPlay.update = game.update;
             change = keepPlay.move(element,targetLocation)
             broad = keepPlay;
